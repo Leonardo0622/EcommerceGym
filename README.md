@@ -251,7 +251,7 @@ Este proyecto está bajo la Licencia ISC.
 
 ## 👨‍💻 Autor
 
-**Jhonatan** - [Tu GitHub](https://github.com/tu-usuario)
+**Leonardo** - [Tu GitHub](https://github.com/Leonardo0622)
 
 ## 🙏 Agradecimientos
 
