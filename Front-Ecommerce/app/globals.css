@@ -1,0 +1,72 @@
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #7c4e4e63;
+  color: #333;
+  /* Se eliminó flex para permitir mejor control del contenido */
+  text-align: center;
+  padding: 0;
+  min-height: 100vh;
+}
+
+main {
+  margin-top: 80px; /* Ajusta para que no se sobreponga con el header */
+  padding: 20px;
+  width: 100%;
+}
+
+/* Estilos para el Navbar */
+header {
+  width: 100%;
+  background: #20b6278e;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 60px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+nav a:hover {
+  background: #444;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  margin-top: 50px;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  background: #b764648e;
+  color: white;
+}
+
+/* Asegurar que el contenido siempre llene la pantalla */
+html, body {
+  height: 100%;
+}
+
+#root, .container {
+  min-height: calc(100vh - 80px); /* Ajusta para que el footer no suba */
+}

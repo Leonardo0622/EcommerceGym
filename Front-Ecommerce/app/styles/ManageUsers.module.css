@@ -1,0 +1,269 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.tableContainer {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.userTable th {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.userTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  color: #212529;
+}
+
+.userRow:hover {
+  background-color: #f8f9fa;
+}
+
+.userImageContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ecef;
+}
+
+.userImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userInitial {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.roleSelect {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  color: #495057;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.roleSelect:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewButton {
+  background-color: #2563eb;
+  color: white;
+}
+
+.viewButton:hover {
+  background-color: #1d4ed8;
+}
+
+.deleteButton {
+  background-color: #dc2626;
+  color: white;
+}
+
+.deleteButton:hover {
+  background-color: #b91c1c;
+}
+
+.deleteButton:disabled {
+  background-color: #f87171;
+  cursor: not-allowed;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.errorMessage {
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+.retryButton {
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.retryButton:hover {
+  background-color: #1d4ed8;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modalContent h2 {
+  margin-top: 0;
+  color: #1a1a1a;
+}
+
+.userDetails {
+  display: flex;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.userImageLarge {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.userImageLarge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userInitialLarge {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563eb;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.userInfo p {
+  margin: 0.5rem 0;
+  color: #4b5563;
+}
+
+.userInfo strong {
+  color: #1a1a1a;
+}
+
+.closeButton {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 4px;
+  color: #1a1a1a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: #d1d5db;
+}

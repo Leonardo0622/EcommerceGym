@@ -1,0 +1,97 @@
+.registerContainer {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  padding: 2rem 2.5rem;
+}
+
+.title {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form label {
+  font-weight: 600;
+  color: #444;
+}
+
+.form input {
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.form button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.form button:disabled {
+  background: #b3d1f7;
+  cursor: not-allowed;
+}
+
+.success {
+  color: #2f855a;
+  background: #c6f6d5;
+  padding: 0.7rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.error {
+  color: #c53030;
+  background: #fed7d7;
+  padding: 0.7rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Nueva clase para el botón de redirección */
+.loginRedirectButton {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  color: #2d3748;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  width: 100%; /* Centra el botón */
+  text-align: center; /* Asegura que el texto del botón esté centrado */
+}
+
+.loginRedirectButton:hover {
+  background-color: #e0e0e0;
+  color: #4a90e2;
+}
+
+.loginRedirectButton:focus {
+  outline: none;
+  border: 2px solid #4a90e2;
+}

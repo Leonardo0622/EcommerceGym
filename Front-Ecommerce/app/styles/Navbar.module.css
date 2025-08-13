@@ -1,0 +1,152 @@
+.navbar {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    background-color: #333;  
+    padding: 10px 0;
+    position: relative;
+    height: 100%;
+  }
+  
+  .navbar ul {
+    list-style: none;        
+    display: flex;           
+    gap: 20px;              
+  }
+  
+  .navbar li {
+    padding: 5px 10px;      
+  }
+  
+  .navbar .cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+}
+
+.userMenu {
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.userButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.profileImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  transition: transform 0.2s;
+}
+
+.userButton:hover .profileImage {
+  transform: scale(1.1);
+}
+
+.userButton i {
+  font-size: 1.2rem;
+}
+
+.userButton:hover {
+  color: #ff6347;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  min-width: 200px;
+  z-index: 1001;
+  display: none;
+  border: 1px solid #444;
+  padding: 8px 0;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background-color: #444;
+  color: #ff6347;
+}
+
+.dropdownDivider {
+  height: 1px;
+  background-color: #444;
+  margin: 0.5rem 0;
+}
+
+  .navbar a {
+    text-decoration: none;   
+    color: white;        
+    font-size: 16px;         
+  }
+  
+  .navbar a:hover {
+    color: #ff6347;         
+  }
+  
+
+/*Estilos para icono del carrito*/
+
+.cartContainer{
+    position: relative;
+}
+
+/*Estilo para le icn del admin*/
+.adminIconContainer {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
