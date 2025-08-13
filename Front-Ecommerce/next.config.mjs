@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'your-backend-domain.onrender.com'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -9,7 +9,17 @@ const nextConfig = {
         port: '5000',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'your-backend-domain.onrender.com',
+        pathname: '/uploads/**',
+      },
     ],
+  },
+  // Configuración para Vercel
+  output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: undefined,
   },
 };
 

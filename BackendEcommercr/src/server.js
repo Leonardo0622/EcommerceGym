@@ -13,6 +13,7 @@ const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const ordersRouter = require("./routes/order.routes");
 const adminRoutes = require("./routes/admin.routes");  // Nuevas rutas de administración
+const healthRoutes = require("./routes/health.routes"); // Health check para deployment
 
 const app = express();
 
@@ -20,20 +21,21 @@ const app = express();
 console.log("MONGO_URI:", process.env.MONGO_URI);
 
 // Conexión a MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => console.log("Conectado a la base de datos de MongoDB"))
 .catch((error) => {
   console.error("Error al conectar con MongoDB:", error);
-  console.log("URI usada para la conexión:", process.env.MONGO_URI);
+  console.log("URI usada para la conexión:", mongoUri);
 });
 
 // Middlewares
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // Tu frontend
+  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000'],
   credentials: true
 }));
 app.use(morgan("dev"));
@@ -56,6 +58,7 @@ app.use("/api/auth", userRoutes);    // Para /api/auth/profile, etc.
 app.use("/api/products", productRoutes);
 app.use("/api/orders", ordersRouter);
 app.use("/api/admin", adminRoutes);  // Nuevas rutas de administración
+app.use("/api", healthRoutes);       // Health check endpoint
 
 // Ruta principal (Opcional)
 app.get("/", (req, res) => {

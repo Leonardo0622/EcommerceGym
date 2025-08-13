@@ -192,6 +192,29 @@ El proyecto incluye configuración completa de Docker para facilitar el desplieg
 - **MongoDB**: Base de datos persistente
 - **Volúmenes**: Persistencia de datos y uploads
 
+## 🚀 Despliegue en Producción
+
+### Plataformas Recomendadas
+- **Frontend**: [Vercel](https://vercel.com) - Optimizado para Next.js
+- **Backend**: [Render](https://render.com) - Fácil y gratuito
+- **Base de Datos**: [MongoDB Atlas](https://mongodb.com/atlas) - Plan gratuito disponible
+
+### Guía Completa
+Consulta [DEPLOYMENT.md](./DEPLOYMENT.md) para instrucciones detalladas de despliegue paso a paso.
+
+### Despliegue Rápido
+```bash
+# 1. Subir código a GitHub
+git add .
+git commit -m "Ready for deployment"
+git push origin main
+
+# 2. Conectar repositorio a Vercel (Frontend)
+# 3. Conectar repositorio a Render (Backend)
+# 4. Configurar MongoDB Atlas
+# 5. Configurar variables de entorno
+```
+
 ## 📝 API Endpoints
 
 ### Autenticación
