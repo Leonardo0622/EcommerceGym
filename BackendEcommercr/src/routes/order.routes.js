@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { createOrder, getUserOrders } = require('../controllers/order.controller');
-const validateJWT = require('../middlewares/validateJWT'); // Middleware para validar el token JWT
+const validateJWT = require('../middlewares/validatejWT'); // Middleware para validar el token JWT
 
 // Creamos las rutas para las ordenes
 router.post("/", validateJWT, createOrder); // Crear una nueva orden
