@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Form, Input, Button, Card, message } from 'antd';
 import axios from 'axios';
 
-export default function LoginPage() {
+function LoginComponent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function LoginPage() {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', values);
+      const response = await axios.post('https://ecommercegym.onrender.com/api/auth/login', values);
       const { token, user } = response.data;
       
       // Guardar datos en localStorage
@@ -100,33 +100,23 @@ export default function LoginPage() {
                 backgroundColor: '#4a90e2',
                 borderColor: '#4a90e2',
                 borderRadius: '6px',
-                marginBottom: '10px'
+                height: '40px',
+                fontSize: '16px',
               }}
             >
               Iniciar Sesión
             </Button>
-
-            <div style={{ textAlign: 'center', marginTop: '15px' }}>
-              <p style={{ color: '#666', marginBottom: '10px' }}>
-                ¿No tienes una cuenta?
-              </p>
-              <Button
-                type="default"
-                block
-                onClick={() => router.push('/register')}
-                style={{
-                  borderRadius: '6px',
-                  borderColor: '#4a90e2',
-                  color: '#4a90e2'
-                }}
-              >
-                Registrarse
-              </Button>
-            </div>
           </Form.Item>
         </Form>
       </Card>
     </div>
   );
+}
 
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <LoginComponent />
+    </Suspense>
+  );
 }  
