@@ -18,18 +18,38 @@ const healthRoutes = require("./routes/health.routes"); // Health check para dep
 const app = express();
 
 // Verificar si la URI de MongoDB se carga correctamente
-console.log("MONGO_URI:", process.env.MONGO_URI);
+console.log("🔍 Variables de entorno:");
+console.log("MONGO_URI:", process.env.MONGO_URI ? "✅ Configurada" : "❌ No configurada");
+console.log("MONGODB_URI:", process.env.MONGODB_URI ? "✅ Configurada" : "❌ No configurada");
 
 // Conexión a MongoDB
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
+
+if (!mongoUri) {
+  console.error("❌ ERROR: No se encontró MONGODB_URI en las variables de entorno");
+  console.error("Por favor, configura MONGODB_URI en Render");
+  process.exit(1);
+}
+
+console.log("🔗 Intentando conectar a MongoDB...");
+console.log("📡 URI de MongoDB:", mongoUri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@')); // Ocultar credenciales
+console.log("🔑 JWT_SECRET:", process.env.JWT_SECRET ? "✅ Configurada" : "❌ No configurada");
+
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000, // Timeout más corto
+  socketTimeoutMS: 45000,
 })
-.then(() => console.log("Conectado a la base de datos de MongoDB"))
+.then(() => {
+  console.log("✅ Conectado exitosamente a MongoDB");
+  console.log("🗄️  Base de datos:", mongoose.connection.name);
+})
 .catch((error) => {
-  console.error("Error al conectar con MongoDB:", error);
-  console.log("URI usada para la conexión:", mongoUri);
+  console.error("❌ Error al conectar con MongoDB:", error.message);
+  console.error("🔧 Verifica que MONGODB_URI esté configurada correctamente en Render");
+  console.error("🌐 Si usas MongoDB Atlas, verifica que la IP esté en la whitelist");
+  process.exit(1);
 });
 
 // Middlewares
