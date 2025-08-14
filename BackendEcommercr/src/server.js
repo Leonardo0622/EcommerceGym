@@ -35,14 +35,18 @@ mongoose.connect(mongoUri, {
 // Middlewares
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000'],
+  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000', 'https://ecommerce-frontend-nine-iota.vercel.app'],
   credentials: true
 }));
 app.use(morgan("dev"));
 
 // Configuración específica para servir imágenes
 app.use('/uploads', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const allowedOrigins = ['http://localhost:3000', 'https://ecommerce-frontend-nine-iota.vercel.app'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
