@@ -14,7 +14,7 @@ export default function ManageUsersPage() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/admin/users', {
+      const res = await fetch('https://ecommercegym.onrender.com/api/admin/users', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -37,7 +37,7 @@ export default function ManageUsersPage() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/admin/users/${userId}`, {
+      const res = await fetch(`https://ecommercegym.onrender.com/api/admin/users/${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -57,7 +57,7 @@ export default function ManageUsersPage() {
   const handleUpdateRole = async (userId, newRole) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/admin/users/${userId}/role`, {
+      const res = await fetch(`https://ecommercegym.onrender.com/api/admin/users/${userId}/role`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -127,7 +127,7 @@ export default function ManageUsersPage() {
                   <div className={styles.userImageContainer}>
                     {user.profileImage ? (
                       <img
-                        src={`http://localhost:5000/uploads/${user.profileImage}`}
+                        src={`https://ecommercegym.onrender.com/uploads/${user.profileImage}`}
                         alt={user.name}
                         className={styles.userImage}
                         onError={(e) => {
@@ -187,7 +187,7 @@ export default function ManageUsersPage() {
               <div className={styles.userImageLarge}>
                 {selectedUser.profileImage ? (
                   <img
-                    src={`http://localhost:5000/uploads/${selectedUser.profileImage}`}
+                    src={`https://ecommercegym.onrender.com/uploads/${selectedUser.profileImage}`}
                     alt={selectedUser.name}
                     onError={(e) => {
                       e.target.src = 'https://via.placeholder.com/150';

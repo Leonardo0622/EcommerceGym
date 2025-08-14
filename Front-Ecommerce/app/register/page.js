@@ -20,7 +20,7 @@ export default function RegisterPage() {
     setMessage(null);
     try {
       console.log("Enviando datos:", form);
-      const res = await axios.post("http://localhost:5000/api/auth/register", form);
+                   const res = await axios.post("https://ecommercegym.onrender.com/api/auth/register", form);
       setMessage({ type: "success", text: res.data.message || "¡Registro exitoso!" });
       // Redirigir según el rol
       if (form.role === "admin") {

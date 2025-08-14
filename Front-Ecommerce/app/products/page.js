@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 import styles from '../styles/products.module.css';
 
-const API_URL = 'http://localhost:5000/api/products';
+const API_URL = 'https://ecommercegym.onrender.com/api/products';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);

@@ -12,7 +12,7 @@ const Login = ({setToken}) => {
         e.preventDefault(); // Prevent the default form submission behavior
 
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", {email, password});
+            const response = await axios.post("https://ecommercegym.onrender.com/api/auth/login", {email, password});
             const { token, user } = response.data;
             
             // Guardar datos en localStorage

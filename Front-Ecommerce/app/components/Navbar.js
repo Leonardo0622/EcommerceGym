@@ -25,7 +25,7 @@ export default function Navbar() {
 
     // Cargar la imagen de perfil
     if (token) {
-      fetch('http://localhost:5000/api/auth/profile', {
+              fetch('https://ecommercegym.onrender.com/api/auth/profile', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -33,7 +33,7 @@ export default function Navbar() {
       .then(res => res.json())
       .then(data => {
         if (data.profileImage) {
-          setProfileImage(`http://localhost:5000/uploads/${data.profileImage}`);
+          setProfileImage(`https://ecommercegym.onrender.com/uploads/${data.profileImage}`);
         }
       })
       .catch(error => console.error('Error fetching profile:', error));
