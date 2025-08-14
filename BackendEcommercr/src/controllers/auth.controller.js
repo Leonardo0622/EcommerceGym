@@ -89,22 +89,31 @@ const jwt = require("jsonwebtoken");
 // Register usuario 
 const register = async (req, res) => {
   try {
+    console.log("Datos recibidos:", req.body);
     // Agregamos el role para que se valide y poder registrar datos siempre y cuando sea admin
     const { name, email, password, role } = req.body;
+    console.log("Campos extraídos:", { name, email, password: password ? "***" : "undefined", role });
+    
     if(!name || !email || !password || !role) {
+      console.log("Faltan campos:", { name: !!name, email: !!email, password: !!password, role: !!role });
       return res.status(400).json({ message: "Todos los campos son obligatorios" });      
     }
 
     // Verificamos si el usuario ya existe
+    console.log("Verificando si el usuario existe...");
     const existingUser = await User.findOne({ email });
     if (existingUser) {
+      console.log("Usuario ya existe:", existingUser.email);
       return res.status(400).json({ message: "El email ya esta registrado" }); 
     }
+    console.log("Usuario no existe, procediendo a crear...");
 
     // Encriptar  la contraseña
+    console.log("Encriptando contraseña...");
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Crear el nuevo usuario
+    console.log("Creando nuevo usuario...");
     const newUser = new User({
       name,
       email,
@@ -113,7 +122,9 @@ const register = async (req, res) => {
     });
 
     // Guardar el nuevo usuario en la base de datos
+    console.log("Guardando usuario en la base de datos...");
     await newUser.save();
+    console.log("Usuario guardado exitosamente:", newUser._id);
     res.status(201).json({ message: "Usuario registrado exitosamente" });
   } catch (error) {
     console.error("Error al registrar en usuario:", error);
