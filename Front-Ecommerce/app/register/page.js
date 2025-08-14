@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";  // Asegúrate de tener esta import
 import styles from "../styles/register.module.css";
 
 export default function RegisterPage() {
-  const [form, setForm] = useState({ name: "", email: "", password: "", role: "user" });
+  const [form, setForm] = useState({ name: "", email: "", password: "", role: "admin" });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const router = useRouter(); // Para poder redirigir
@@ -19,6 +19,7 @@ export default function RegisterPage() {
     setLoading(true);
     setMessage(null);
     try {
+      console.log("Enviando datos:", form);
       const res = await axios.post("https://ecommercegym.onrender.com/api/auth/register", form);
       setMessage({ type: "success", text: res.data.message || "¡Registro exitoso!" });
       // Redirigir según el rol
