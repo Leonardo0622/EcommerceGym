@@ -21,7 +21,7 @@ function LoginComponent() {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post('https://ecommercegym.onrender.com/api/auth/login', values);
+      const response = await axios.post('http://localhost:5000/api/auth/login', values);
       const { token, user } = response.data;
       
       // Guardar datos en localStorage

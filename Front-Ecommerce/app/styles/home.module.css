@@ -22,6 +22,8 @@
   color: white;
   text-align: center;
   z-index: 1;
+  padding: 0 1rem;
+  max-width: 600px;
 }
 
 .heroContent h1 {
@@ -316,6 +318,267 @@
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+/* ===== MEDIA QUERIES PARA RESPONSIVE ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .hero {
+    height: 70vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 2.5rem;
+  }
+  
+  .heroContent p {
+    font-size: 1.1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+  
+  .productsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .accessoriesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .infoText h2 {
+    font-size: 2rem;
+  }
+  
+  .motivationalText {
+    font-size: 1.6rem;
+  }
+}
+
+/* Tablets pequeñas (768px - 900px) */
+@media (max-width: 900px) {
+  .hero {
+    height: 60vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 2.2rem;
+  }
+  
+  .productsContainer,
+  .accessoriesSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .infoSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .infoWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .infoImage img {
+    max-width: 400px;
+  }
+}
+
+/* Móviles grandes (481px - 767px) */
+@media (max-width: 767px) {
+  .hero {
+    height: 50vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 1.8rem;
+  }
+  
+  .heroContent p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .productsContainer,
+  .accessoriesSection {
+    padding: 2rem 1rem;
+  }
+  
+  .productsGrid,
+  .accessoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .productInfo,
+  .accessoryInfo {
+    padding: 1rem;
+  }
+  
+  .productTitle {
+    font-size: 1.1rem;
+  }
+  
+  .productDesc {
+    font-size: 1.2rem;
+  }
+  
+  .accessoryTitle {
+    font-size: 1.2rem;
+  }
+  
+  .infoSection {
+    padding: 2rem 1rem;
+  }
+  
+  .infoText h2 {
+    font-size: 1.6rem;
+  }
+  
+  .infoText p {
+    font-size: 1rem;
+  }
+  
+  .motivationalSection {
+    padding: 30px 15px;
+    margin-top: 30px;
+  }
+  
+  .motivationalText {
+    font-size: 1.4rem;
+  }
+}
+
+/* Móviles pequeños (320px - 480px) */
+@media (max-width: 480px) {
+  .hero {
+    height: 40vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 1.5rem;
+  }
+  
+  .heroContent p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .productsContainer,
+  .accessoriesSection {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .productsGrid,
+  .accessoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .productInfo,
+  .accessoryInfo {
+    padding: 0.8rem;
+  }
+  
+  .productTitle {
+    font-size: 1rem;
+  }
+  
+  .productDesc {
+    font-size: 1.1rem;
+  }
+  
+  .accessoryTitle {
+    font-size: 1.1rem;
+  }
+  
+  .accessoryDesc {
+    font-size: 0.9rem;
+  }
+  
+  .infoSection {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .infoText h2 {
+    font-size: 1.4rem;
+  }
+  
+  .infoText p {
+    font-size: 0.9rem;
+  }
+  
+  .motivationalSection {
+    padding: 25px 10px;
+    margin-top: 25px;
+  }
+  
+  .motivationalText {
+    font-size: 1.2rem;
+  }
+}
+
+/* Móviles muy pequeños (menos de 320px) */
+@media (max-width: 320px) {
+  .hero {
+    height: 35vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 1.3rem;
+  }
+  
+  .heroContent p {
+    font-size: 0.8rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
+  
+  .productTitle,
+  .accessoryTitle {
+    font-size: 0.9rem;
+  }
+  
+  .productDesc {
+    font-size: 1rem;
+  }
+  
+  .motivationalText {
+    font-size: 1rem;
+  }
 }
 
   
