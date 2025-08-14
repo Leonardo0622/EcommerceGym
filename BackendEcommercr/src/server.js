@@ -35,49 +35,19 @@ console.log("🔗 Intentando conectar a MongoDB...");
 console.log("📡 URI de MongoDB:", mongoUri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@')); // Ocultar credenciales
 
 // Asegurar que la URI tenga la base de datos
+let finalUri = mongoUri;
 if (!mongoUri.includes('/ecommerce')) {
-  const correctedUri = mongoUri.replace('?', '/ecommerce?');
+  finalUri = mongoUri.replace('?', '/ecommerce?');
   console.log("🔧 Corrigiendo URI para incluir base de datos...");
-  mongoose.connect(correctedUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 45000,
-  })
-  .then(() => {
-    console.log("✅ Conectado exitosamente a MongoDB");
-    console.log("🗄️  Base de datos:", mongoose.connection.name);
-  })
-  .catch((error) => {
-    console.error("❌ Error al conectar con MongoDB:", error.message);
-    console.error("🔧 Verifica que MONGODB_URI esté configurada correctamente en Render");
-    console.error("🌐 Si usas MongoDB Atlas, verifica que la IP esté en la whitelist");
-    process.exit(1);
-  });
-} else {
-  mongoose.connect(mongoUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 45000,
-  })
-  .then(() => {
-    console.log("✅ Conectado exitosamente a MongoDB");
-    console.log("🗄️  Base de datos:", mongoose.connection.name);
-  })
-  .catch((error) => {
-    console.error("❌ Error al conectar con MongoDB:", error.message);
-    console.error("🔧 Verifica que MONGODB_URI esté configurada correctamente en Render");
-    console.error("🌐 Si usas MongoDB Atlas, verifica que la IP esté en la whitelist");
-    process.exit(1);
-  });
 }
+
 console.log("🔑 JWT_SECRET:", process.env.JWT_SECRET ? "✅ Configurada" : "❌ No configurada");
 
-mongoose.connect(mongoUri, {
+// Conectar a MongoDB (solo una vez)
+mongoose.connect(finalUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000, // Timeout más corto
+  serverSelectionTimeoutMS: 5000,
   socketTimeoutMS: 45000,
 })
 .then(() => {
