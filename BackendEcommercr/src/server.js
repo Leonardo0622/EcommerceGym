@@ -34,12 +34,9 @@ if (!mongoUri) {
 console.log("🔗 Intentando conectar a MongoDB...");
 console.log("📡 URI de MongoDB:", mongoUri.replace(/\/\/[^:]+:[^@]+@/, '//***:***@')); // Ocultar credenciales
 
-// Asegurar que la URI tenga la base de datos
+// Usar la URI tal como está (ya incluye la base de datos en el nombre del cluster)
 let finalUri = mongoUri;
-if (!mongoUri.includes('/ecommerce')) {
-  finalUri = mongoUri.replace('?', '/ecommerce?');
-  console.log("🔧 Corrigiendo URI para incluir base de datos...");
-}
+console.log("🔧 Usando URI original de MongoDB Atlas...");
 
 console.log("🔑 JWT_SECRET:", process.env.JWT_SECRET ? "✅ Configurada" : "❌ No configurada");
 
