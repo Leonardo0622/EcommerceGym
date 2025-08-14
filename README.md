@@ -1,5 +1,7 @@
 # 🛒 Ecommerce Full-Stack Application
 
+**Estado del Proyecto:** ✅ Backend desplegado en Render | 🚧 Frontend en proceso de despliegue en Vercel
+
 Una aplicación de ecommerce completa construida con tecnologías modernas, incluyendo backend API REST, frontend React/Next.js, y base de datos MongoDB.
 
 ## 🚀 Tecnologías Utilizadas
