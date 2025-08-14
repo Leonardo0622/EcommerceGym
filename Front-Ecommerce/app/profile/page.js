@@ -20,7 +20,7 @@ export default function Perfil() {
     console.log('Iniciando fetchPerfil...');
     const fetchPerfil = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/auth/profile', {
+        const res = await fetch('https://ecommercegym.onrender.com/api/auth/profile', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
@@ -33,7 +33,7 @@ export default function Perfil() {
           
           // Verificar si la imagen existe
           if (data.profileImage) {
-            const imgUrl = `http://localhost:5000/uploads/${data.profileImage}`;
+            const imgUrl = `https://ecommercegym.onrender.com/uploads/${data.profileImage}`;
             console.log('Trying to load image from:', imgUrl);
             
             // Intentar cargar la imagen
@@ -107,7 +107,7 @@ export default function Perfil() {
         console.log('Imagen adjuntada al FormData');
       }
 
-      const res = await fetch('http://localhost:5000/api/auth/profile', {
+      const res = await fetch('https://ecommercegym.onrender.com/api/auth/profile', {
         method: 'PUT',
         headers: { 
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -144,7 +144,7 @@ export default function Perfil() {
               src={
                 imagePreview ||
                 (perfil.profileImage
-                  ? `http://localhost:5000/uploads/${perfil.profileImage}`
+                  ? `https://ecommercegym.onrender.com/uploads/${perfil.profileImage}`
                   : 'https://via.placeholder.com/150')
               }
               alt="Profile"
@@ -169,11 +169,11 @@ export default function Perfil() {
           </div>
           {/* Debug info */}
           <div style={{ fontSize: '12px', color: '#666' }}>
-            Current image source: {imagePreview ? 'Preview' : perfil.profileImage ? `http://localhost:5000/uploads/${perfil.profileImage}` : 'Placeholder'}
+            Current image source: {imagePreview ? 'Preview' : perfil.profileImage ? `https://ecommercegym.onrender.com/uploads/${perfil.profileImage}` : 'Placeholder'}
           </div>
           {/* Debug info */}
           <div style={{ fontSize: '12px', color: '#666' }}>
-            Ruta de imagen: {perfil.profileImage ? `http://localhost:5000/uploads/${perfil.profileImage}` : 'No hay imagen'}
+            Ruta de imagen: {perfil.profileImage ? `https://ecommercegym.onrender.com/uploads/${perfil.profileImage}` : 'No hay imagen'}
           </div>
           {/* Debug info */}
           <div style={{ fontSize: '12px', color: '#666' }}>

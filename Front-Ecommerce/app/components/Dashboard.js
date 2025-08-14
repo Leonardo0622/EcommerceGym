@@ -7,7 +7,7 @@ import axios from 'axios';
 import styles from '../styles/admin.module.css';
 import AdminNavbar from "../components/AdminNavbar"; // Importamos el navbar
 
-const API_URL = 'http://localhost:5000/api/products';
+const API_URL = 'https://ecommercegym.onrender.com/api/products';
 
 const handleFormError = () => {
   message.error('Todos los campos deben estar llenos');
