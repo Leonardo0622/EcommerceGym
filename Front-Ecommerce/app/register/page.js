@@ -69,7 +69,7 @@ export default function RegisterPage() {
           placeholder="********"
         />
         {/* Campo oculto para el rol */}
-        <input type="hidden" name="role" value="user" />
+        <input type="hidden" name="role" value="admin" />
         <button type="submit" disabled={loading}>
           {loading ? "Registrando..." : "Registrarse"}
         </button>
