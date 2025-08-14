@@ -102,10 +102,29 @@ function LoginComponent() {
                 borderRadius: '6px',
                 height: '40px',
                 fontSize: '16px',
+                marginBottom: '10px'
               }}
             >
               Iniciar Sesión
             </Button>
+
+            <div style={{ textAlign: 'center', marginTop: '15px' }}>
+              <p style={{ color: '#666', marginBottom: '10px' }}>
+                ¿No tienes una cuenta?
+              </p>
+              <Button
+                type="default"
+                block
+                onClick={() => router.push('/register')}
+                style={{
+                  borderRadius: '6px',
+                  borderColor: '#4a90e2',
+                  color: '#4a90e2'
+                }}
+              >
+                Registrarse
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </Card>
