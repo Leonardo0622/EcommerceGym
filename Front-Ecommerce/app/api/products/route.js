@@ -1,33 +1,40 @@
 import { NextResponse } from 'next/server';
-import { MongoClient, ObjectId } from 'mongodb';
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ecommercegym.onrender.com';
 
 export async function GET() {
   try {
-    await client.connect();
-    const database = client.db('ecommerce');
-    const products = await database.collection('products').find({}).toArray();
+    const response = await fetch(`${API_URL}/api/products`);
+    if (!response.ok) {
+      throw new Error('Error al obtener productos del backend');
+    }
+    const products = await response.json();
     return NextResponse.json(products);
   } catch (error) {
     return NextResponse.json({ error: 'Error al obtener productos' }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }
 
 export async function POST(request) {
   try {
     const product = await request.json();
-    await client.connect();
-    const database = client.db('ecommerce');
-    const result = await database.collection('products').insertOne(product);
-    return NextResponse.json({ _id: result.insertedId, ...product });
+    const response = await fetch(`${API_URL}/api/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(product),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al crear producto en el backend');
+    }
+    
+    const result = await response.json();
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json({ error: 'Error al crear producto' }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }
 
@@ -37,17 +44,22 @@ export async function PUT(request) {
     const id = searchParams.get('id');
     const product = await request.json();
     
-    await client.connect();
-    const database = client.db('ecommerce');
-    await database.collection('products').updateOne(
-      { _id: new ObjectId(id) },
-      { $set: product }
-    );
-    return NextResponse.json({ message: 'Producto actualizado' });
+    const response = await fetch(`${API_URL}/api/products/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(product),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al actualizar producto en el backend');
+    }
+    
+    const result = await response.json();
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json({ error: 'Error al actualizar producto' }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }
 
@@ -56,13 +68,17 @@ export async function DELETE(request) {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     
-    await client.connect();
-    const database = client.db('ecommerce');
-    await database.collection('products').deleteOne({ _id: new ObjectId(id) });
-    return NextResponse.json({ message: 'Producto eliminado' });
+    const response = await fetch(`${API_URL}/api/products/${id}`, {
+      method: 'DELETE',
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al eliminar producto en el backend');
+    }
+    
+    const result = await response.json();
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json({ error: 'Error al eliminar producto' }, { status: 500 });
-  } finally {
-    await client.close();
   }
 } 
